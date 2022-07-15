@@ -34,17 +34,26 @@ public class Programa {
         float contratante = 0.0f;
 
         if (tipoAcesso.equals("Mensalista")) {
-            contratante = valorMensalista * valorContratante;
+            contratante = valorMensalista * retornoContratante;
         } else if (tipoAcesso.equals("Evento")) {
-            contratante = valorEvento * valorContratante;
+            contratante = valorEvento * retornoContratante;
         } else if (tipoAcesso.equals("Noturno")) {
             totalAcesso = valorDiaria * valorDiariaNoturna;
-            contratante = totalAcesso * valorContratante;
+            contratante = totalAcesso * retornoContratante;
         } else {
-            SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-            Date date1 = format.parse(horaEntrada);
-            Date date2 = format.parse(horaSaida);
-            long difference = date2.getTime() - date1.getTime();
+        	long minutos = new Horario(horaEntrada, horaSaida).calculaMinutos();
+            
+            int tempo = (int) Math.round(minutos/15.0);
+            System.out.println(tempo + "");
+            
+            if (tempo < 4) {
+            	totalAcesso = valorFracao * tempo;
+            	contratante = totalAcesso * retornoContratante;
+            	System.out.println(totalAcesso + "");
+            	System.out.println(contratante + "");
+            } else {
+            	// Realiza calculo quando é igual ou mais de 1 hora (frações de 15 min) 
+            }
         }
     }
 
