@@ -1,52 +1,76 @@
 package app;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import java.util.ArrayList;
 
 public class DiariaDiurna {
 	
-  private Map<String, Float> mapDiariaDiurna
-    = new HashMap<String,Float>();
+	ArrayList<String> placa;
+	ArrayList<Float> valorDiaria;
+	ArrayList<String> horarioEntrada;
+	ArrayList<String> horarioSaida;
+	
+	
+	public DiariaDiurna(){
+		this.placa = new ArrayList<String>();
+		this.valorDiaria = new ArrayList<Float>();
+		this.horarioEntrada = new ArrayList<String>();
+		this.horarioSaida = new ArrayList<String>();
+	}
 
-  
-  private HashMap<String, Float[]> mapHorariosDiariaDiurna
-  	= new HashMap<String, Float []>();
-  
-  public void cadastrarDiariaDiurna(String placa, float valorDiaria ,float horarioEntrada, float horarioSaida) {
-	  Float[] horarios =  new Float[2];
-	  
-	  horarios[0] = horarioEntrada;
-	  horarios[1] = horarioSaida;
-	  
-	  mapDiariaDiurna.put(placa, valorDiaria);
-	  mapHorariosDiariaDiurna.put(placa, horarios);
-  }
 
-  public boolean contemDiariaDiurna(String placa) {
-	  boolean contemPlaca  = mapDiariaDiurna.containsKey(placa);
-
-		return contemPlaca;
-  }
-
-  public float getvalorDiaria(String placa) {
-	  Float valor = (Float) mapDiariaDiurna.get(placa);
-	  return valor;
-  }
-  
-  public float getHorarioEntrada(String placa) {
-	  	Float[] horarios = mapHorariosDiariaDiurna.get(placa);
-	  	return horarios[0];
+	public void cadastraDiariaDiurna(String placa, float valorDiaria, String horarioEntrada, String horarioSaida) {
+		this.placa.add(placa);
+		this.valorDiaria.add(valorDiaria);
+		this.horarioEntrada.add(horarioEntrada);
+		this.horarioSaida.add(horarioSaida);
 		
-  }
-  
-  public float getHorarioSaida(String placa) {
-	  	Float[] horarios = mapHorariosDiariaDiurna.get(placa);
-	  	return horarios[1];
+	}
+
+	public boolean contemDiariaDiurna(String placa) {
+		boolean resposta = false; 
+		for (String p:this.placa) {
+			if (p.equalsIgnoreCase(placa))
+				return true;
+		}
 		
+		return resposta;
+	}
+
+
+	public Float getValorDiaria(String placa) {
+		int pos= 0;
+		for (String p:this.placa) {
+			if (p.equalsIgnoreCase(placa))
+				pos = p.indexOf(placa);
+		}
 		
-  }
-  
-  
+		return this.valorDiaria.get(pos);
+	}
+
+
+	public String getHorarioEntrada(String placa) {
+		int pos= 0;
+		for (String p:this.placa) {
+			if (p.equalsIgnoreCase(placa))
+				pos = p.indexOf(placa);
+		}
+		
+		return this.horarioEntrada.get(pos);
+	}
+
+
+	public String getHorarioSaida(String placa) {
+		int pos= 0;
+		for (String p:this.placa) {
+			if (p.equalsIgnoreCase(placa))
+				pos = p.indexOf(placa);
+		}
+		
+		return this.horarioSaida.get(pos);
+	}
+	
+	
+	
+ 
   
 }
