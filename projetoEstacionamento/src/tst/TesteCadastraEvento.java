@@ -17,7 +17,7 @@ public class TesteCadastraEvento {
 
 	@Test
 	public void cadastraEvento() {
-		fail("Not yet implemented");
+		assertTrue(eventos.cadastraEvento("FlaXFlu", "9:00", "13:00", "17/07/2022"));
 	}
 
 }
