@@ -2,6 +2,8 @@ package app;
 
 import java.util.Scanner;
 
+import exceptions.*;
+
 public class Programa {
     Scanner input = new Scanner(System.in);
 
@@ -29,7 +31,7 @@ public class Programa {
         return horaSaida;
     }
 
-    public void setPlaca(String placa) throws ValorInvalidoException, DescricaoEmBrancoException {
+    public void setPlaca(String placa) throws ValorAcessoInvalidoException, DescricaoEmBrancoException {
         placa = placa.trim();
         if(placa.isEmpty()) {
             throw new DescricaoEmBrancoException("Placa");
@@ -39,7 +41,7 @@ public class Programa {
         //formato placa "antiga"
         Pattern pattern = Pattern.compile("^[A-z]{3}-[0-9]{4}$");
         if(!pattern.matcher(placa).find()) {
-            throw new ValorInvalidoException("Placa");
+            throw new ValorAcessoInvalidoException("Placa");
         } else {
             this.placa = placa.toUpperCase();
         }
