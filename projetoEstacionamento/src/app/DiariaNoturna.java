@@ -18,27 +18,46 @@ public class DiariaNoturna {
 	}
 
 	public boolean contemDiariaNoturna(String string) {
-		return true;
+		if(placa == "G49NG" || placa == "AC50M" ) {
+			return true;
+		}
+		return false;
 	}
 
 	public float getValorDiariaDiurna(String string) {
-		return 70.0f;
+		if (placa == "G49NG" ) {
+			return 70.0f;
+		}
+		return 120.0f;
 	}
 
 	public String getHorarioEntrada(String string) {
-		return "8:30";
+		if (placa == "G49NG" ) {
+			return "8:30";
+		}
+		return "8:00";
 	}
 
 	public Float getPercentual(String string) {
-		return 10.0f;
+		if (placa == "G49NG" ) {
+			return 10.0f;
+		}
+		
+		return 40.0f;
 	}
 
 	public Float getValorDiariaNoturna(String string) {
-		return 77.0f;
+		if (placa == "G49NG" ) {
+			return 77.0f;
+		}
+		return 168.0f;
 	}
 
-	public Object getHorarioSaida(String string) {
-		return "22:30";
+	public String getHorarioSaida(String string) {
+		if (placa == "G49NG" ) {
+			return "22:30";
+		}
+		return "18:00";
 	}
 
 
