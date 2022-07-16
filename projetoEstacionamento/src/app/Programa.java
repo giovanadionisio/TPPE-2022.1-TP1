@@ -5,9 +5,11 @@ import java.util.Scanner;
 public class Programa {
     Scanner input = new Scanner(System.in);
 
-    private String placa;
+    public String placa;
+    public String horaEntrada;
+    public String horaSaida;
 
-    public Veiculo(String placa) throws DescricaoEmBrancoException, ValorInvalidoException {
+    public Veiculo(String placa, String horaEntrada, String horaSaida) throws DescricaoEmBrancoException, ValorInvalidoException {
         try {
             setPlaca(placa);
         } catch(DescricaoEmBrancoException | ValorInvalidoException e) {
@@ -19,15 +21,37 @@ public class Programa {
         return placa;
     }
 
-    public void setPlaca(String placa) throws ValorInvalidoException, DescricaoEmBrancoException {
-        placa = placa.trim();
-        if(placa.isEmpty()) {throw new DescricaoEmBrancoException("Placa");}
-        
-        Pattern pattern = Pattern.compile("^[A-z]{3}-[0-9]{4}$");
-        if(!pattern.matcher(placa).find()) {throw new ValorInvalidoException("Placa");}
-        else {this.placa = placa.toUpperCase();}
+    public String getHoraEntrada() {
+        return horaEntrada;
     }
 
+    public String getHoraSaida() {
+        return horaSaida;
+    }
+
+    public void setPlaca(String placa) throws ValorInvalidoException, DescricaoEmBrancoException {
+        placa = placa.trim();
+        if(placa.isEmpty()) {
+            throw new DescricaoEmBrancoException("Placa");
+        
+        }
+        
+        //formato placa "antiga"
+        Pattern pattern = Pattern.compile("^[A-z]{3}-[0-9]{4}$");
+        if(!pattern.matcher(placa).find()) {
+            throw new ValorInvalidoException("Placa");
+        } else {
+            this.placa = placa.toUpperCase();
+        }
+    }
+    public void setHoraEntrada(String horaEntrada){
+        //
+    }
+
+    public void setHoraSaida(String horaSaida){
+        //
+    }
+    
     public void cadastraAcesso() {
     	//
     }
