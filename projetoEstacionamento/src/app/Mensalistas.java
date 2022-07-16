@@ -9,13 +9,13 @@ public class Mensalistas {
 		this.mensalistas = new ArrayList<String>();
 	}
 
-	public void cadastraMensalista(String nome) {
-		this.mensalistas.add(nome);
+	public void cadastraMensalista(String placa) {
+		this.mensalistas.add(placa);
 	}
 
-	public boolean ehMensalista(String nome) {
+	public boolean ehMensalista(String placa) {
 		for (String s : this.mensalistas) {
-			if (s.equalsIgnoreCase(nome)) {
+			if (s.equalsIgnoreCase(placa)) {
 				return true;
 			}
 		}
