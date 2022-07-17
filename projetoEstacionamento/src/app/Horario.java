@@ -28,6 +28,6 @@ public class Horario {
 		}
         
         long difference = (date2.getTime() - date1.getTime()) / 60000;
-        return Math.abs(difference);
+        return difference;
 	}
 }
