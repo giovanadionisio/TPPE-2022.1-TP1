@@ -1,6 +1,7 @@
 package app;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 import exceptions.*;
 
@@ -11,11 +12,11 @@ public class Programa {
     public String horaEntrada;
     public String horaSaida;
 
-    public Veiculo(String placa, String horaEntrada, String horaSaida) throws DescricaoEmBrancoException, ValorInvalidoException {
-        try {
-            setPlaca(placa);
-        } catch(DescricaoEmBrancoException | ValorInvalidoException e) {
-            throw e;
+    public void Veiculo(String placa, String horaEntrada, String horaSaida) throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
+        if (placa.isEmpty()) {
+        	throw new DescricaoEmBrancoException("placa");
+        } else {
+        	setPlaca(placa);
         }
     }
 
