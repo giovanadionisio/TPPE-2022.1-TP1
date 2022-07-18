@@ -62,5 +62,7 @@ public class Estacionamento {
 		
 		veiculos[this.capacidadeAtual] = new Veiculo(horarioEntrada,horarioSaida,placa,tipoAcesso);
 		this.capacidadeAtual++;
+		
+		System.out.println("Veiculo cadastrado no sistema!");
 	}
 }
