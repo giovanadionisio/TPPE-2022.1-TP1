@@ -2,6 +2,8 @@ package app;
 
 import java.util.Scanner;
 
+import exceptions.DescricaoEmBrancoException;
+
 public class Programa {
     private boolean running = true;
     private Scanner input = new Scanner(System.in);
@@ -10,13 +12,16 @@ public class Programa {
     private Estacionamento estac2;
     private Estacionamento estac3;
     private Veiculo[] veiculos;
+    
+    private Mensalistas mensalistas;
 
-    public Programa() {
-        this.cadastraEstacionamentos();
+    public Programa() throws DescricaoEmBrancoException {
+        this.mensalistas = new Mensalistas();
+    	this.cadastraEstacionamentos();
         this.boasVindas();
     }
 
-    private void boasVindas() {
+    private void boasVindas() throws DescricaoEmBrancoException {
         while (this.running) {
             System.out.println("----------------------------------------------------");
             System.out.println("|      Bem-vindo ao sistema de estacionamento!     |");
@@ -32,6 +37,7 @@ public class Programa {
             switch (opcao) {
                 case 1:
                     // this.estac1.menu();
+                	this.menuOpcoes();
                     break;
                 case 2:
                     // this.estac2.menu();
@@ -62,8 +68,61 @@ public class Programa {
         estac3.cadastraValoresSecundarios(350.0f, 40.0f, 600, 0.7f);
         estac3.cadastraHorarios("06:00", "22:00");
     }
+    
+    private void menuOpcoes() throws DescricaoEmBrancoException {
+    	System.out.println("----------------------------------------------------");
+        System.out.println("|                  Menu de Opções                  |");
+        System.out.println("----------------------------------------------------\n");
+        System.out.println("1 - Cadastrar Mensalista");
+        System.out.println("2 - Cadastrar Evento");
+        System.out.println("3 - Inserir Acesso");
+        System.out.println("4 - Inserir Saída");
+        System.out.println("5 - Calcular valores de repasse");
+        System.out.println("0 - Sair");
 
-    public void calculaAcesso() {
+        int opcao = input.nextInt();
+
+        switch (opcao) {
+            case 1:
+                this.cadastrarMensalista();
+                break;
+            case 2:
+                // this.estac2.menu();
+                break;
+            case 3:
+                // this.estac3.menu();
+                break;
+            case 4:
+                // this.estac3.menu();
+                break;
+            case 5:
+                // this.estac3.menu();
+                break;
+            case 0:
+                this.running = false;
+                break;
+            default:
+                System.out.println("Opção inválida!");
+                break;
+        }
+                
+    }
+
+    private void cadastrarMensalista() throws DescricaoEmBrancoException {
+    	System.out.println("Insira a placa do mensalista: ");
+    	String placaMensalista = input.next();
+    	
+    	if(placaMensalista.isEmpty()) {
+    		throw new DescricaoEmBrancoException("Placa");
+    	} else {
+    		this.mensalistas.cadastraMensalista(placaMensalista);
+    	}
+    	
+    	System.out.println("Mensalista Cadastrado!");
+    	this.menuOpcoes();
+	}
+
+	public void calculaAcesso() {
         // (valores do objeto de acesso)
         String placa = "HI139";
         String horaEntrada = "8:30";
@@ -100,7 +159,7 @@ public class Programa {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DescricaoEmBrancoException {
         Programa programa = new Programa();
         programa.boasVindas();
     }
