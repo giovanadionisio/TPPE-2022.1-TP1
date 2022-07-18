@@ -139,8 +139,11 @@ public class Programa {
         float totalAcesso = 0.0f;
         float contratante = 0.0f;
 
-        if (tipoAcesso.equals("Mensalista")) {
-            contratante = estac1.valorMensalista * estac1.retornoContratante;
+        //if (tipoAcesso.equals("Mensalista")) {
+            //contratante = estac1.valorMensalista * estac1.retornoContratante;
+        if (this.mensalistas.ehMensalista(placa)) {
+        	totalAcesso = estac1.valorMensalista; 
+        	// TODO montanteEstacionamento = montanteEstacionamento + totalAcesso;
         } else if (tipoAcesso.equals("Evento")) {
             contratante = estac1.valorEvento * estac1.retornoContratante;
         } else if (tipoAcesso.equals("Noturno")) {
