@@ -25,6 +25,17 @@ public class TesteCadastraEstacionamento {
 		
 		assertEquals(this.programa.estacionamentos.size(), 1);
 	}
+	
+	@Test
+	public void testeCadastraDoisEstacionamentos() throws ValorAcessoInvalidoException, DescricaoEmBrancoException {
+		Estacionamento estacionamento = new Estacionamento(30.0f, 0.15f, 120f, 0.45f, 600f, 50f, "06:00", "22:00", 300, 0.5f);
+		Estacionamento estacionamento2 = new Estacionamento(20.0f, 0.1f, 70f, 0.3f, 455f, 60f, "00:00", "00:00", 120, 0.7f);
+		
+		this.programa.cadastraEstacionamento(estacionamento);
+		this.programa.cadastraEstacionamento(estacionamento2);
+		
+		assertEquals(this.programa.estacionamentos.size(), 2);
+	}
 
 
 }
