@@ -12,40 +12,25 @@ public class Programa {
     private Estacionamento estac2;
     private Estacionamento estac3;
     private Veiculo[] veiculos;
-
-    public String placa;
-    public String horaEntrada;
-    public String horaSaida;
     
     public Programa () {
     	this.cadastraEstacionamentos();
     }
-
-    public void Veiculo(String placa, String horaEntrada, String horaSaida) throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
-        if (placa.isEmpty()) {
-        	throw new DescricaoEmBrancoException("placa");
-        } else {
-        	setPlaca(placa);
-        }
-    }
+    
+    private String placa;
+    public Horario horario;
 
     public String getPlaca() {
-        return placa;
+        return this.placa;
     }
-
-    public String getHoraEntrada() {
-        return horaEntrada;
-    }
-
-    public String getHoraSaida() {
-        return horaSaida;
-    }
-
-    public void setPlaca(String placa) throws ValorAcessoInvalidoException, DescricaoEmBrancoException {
-        placa = placa.trim();
+    
+    public void cadastraAcesso(String horarioEntrada, String horarioSaida, String placa) throws ValorAcessoInvalidoException, DescricaoEmBrancoException{
+    	
+    	this.horario = new Horario(horarioEntrada,horarioSaida);
+    	
+    	placa = placa.trim();
         if(placa.isEmpty()) {
             throw new DescricaoEmBrancoException("Placa");
-        
         }
         
         //formato placa "antiga"
@@ -56,14 +41,7 @@ public class Programa {
             this.placa = placa.toUpperCase();
         }
     }
-    public void setHoraEntrada(String horaEntrada){
-        //
-    }
-
-    public void setHoraSaida(String horaSaida){
-        //
-    }
-
+    
     private void cadastraEstacionamentos() {
         this.estac1 = new Estacionamento(30.0f, 0.15f, 120.0f, 0.45f);
         estac1.cadastraValoresSecundarios(600.0f, 50.0f, 300, 0.5f);
@@ -76,10 +54,6 @@ public class Programa {
         this.estac3 = new Estacionamento(10.0f, 0.0f, 50.0f, 0.40f);
         estac3.cadastraValoresSecundarios(350.0f, 40.0f, 600, 0.7f);
         estac3.cadastraHorarios("06:00", "22:00");
-    }
-    
-    public void cadastraAcesso() {
-    	//
     }
 
     public void recebeAcesso() {    	
