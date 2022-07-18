@@ -45,8 +45,9 @@ public class TesteCadastraEstacionamento {
 		
 		this.programa.cadastraEstacionamento(estacionamento);
 		this.programa.cadastraEstacionamento(estacionamento2);
+		this.programa.cadastraEstacionamento(estacionamento3);
 		
-		assertEquals(this.programa.estacionamentos.size(), 2);
+		assertEquals(this.programa.estacionamentos.size(), 3);
 	}
 
 
