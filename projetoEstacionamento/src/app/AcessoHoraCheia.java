@@ -27,7 +27,7 @@ public class AcessoHoraCheia {
 		if (placa == "G49NG" ) {
 			return 30.0f;
 		}
-		return 100.0f;
+		return 20.0f;
 	}
 
 	public String getHorarioEntrada(String string) {
@@ -42,7 +42,7 @@ public class AcessoHoraCheia {
 			return 15.0f;
 		}
 
-		return 40.0f;
+		return 10.0f;
 	}
 
 	public Object getHorarioSaida(String string) {
@@ -50,7 +50,7 @@ public class AcessoHoraCheia {
 		if (placa == "G49NG" ) {
 			return "9:30";
 		}
-		return "18:00";
+		return "11:00";
 	}
 
 
