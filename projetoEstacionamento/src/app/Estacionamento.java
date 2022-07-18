@@ -34,10 +34,29 @@ public class Estacionamento {
 		this.horarioAbre = "";
 		this.horarioFecha = "";
 		this.capacidade = 0;
-		this.lotacao = 0;
 		this.veiculos = new ArrayList<Veiculo>();
 		
 		this.retornoContratante = 0.0f;
+	}
+	
+	public Estacionamento(float valorFracao, float valorHoraCheia, float valorDiaria, float valorDiariaNoturna, 
+			float valorMensalista, float valorEvento, String horarioAbre, String horarioFecha, 
+			int capacidade, float retornoContratante) throws ValorAcessoInvalidoException, DescricaoEmBrancoException {
+		
+		this.setValorFracao(valorFracao);
+		this.setValorHoraCheia(valorHoraCheia);
+		this.setValorDiaria(valorDiaria);
+		this.setValorDiariaNoturna(valorDiariaNoturna);
+		
+		this.setValorMensalista(valorMensalista);
+		this.setValorEvento(valorEvento);
+		
+		this.setHorarioAbre(horarioAbre);
+		this.setHorarioFecha(horarioFecha);
+		this.setCapacidade(capacidade);
+		this.setRetornoContratante(retornoContratante);
+		
+		this.veiculos = new ArrayList<Veiculo>();
 	}
 
 	public void setValorFracao(float valorFracao) throws ValorAcessoInvalidoException {

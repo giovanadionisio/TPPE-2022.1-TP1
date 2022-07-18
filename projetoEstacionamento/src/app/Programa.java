@@ -1,5 +1,6 @@
 package app;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -10,20 +11,25 @@ public class Programa {
     private boolean running = true;
     private Scanner input = new Scanner(System.in);
 
-    private Estacionamento estac1;
-    private Estacionamento estac2;
-    private Estacionamento estac3;
+    public ArrayList<Estacionamento> estacionamentos; 
     private Veiculo[] veiculos;
     
     private Mensalistas mensalistas;
 
     public Programa() throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
-        this.mensalistas = new Mensalistas();
-    	this.cadastraEstacionamentos();
-        this.boasVindas();
+        this.estacionamentos = new ArrayList<Estacionamento>();
+//    	this.mensalistas = new Mensalistas();
+//    	this.cadastraEstacionamentos();
+//        this.boasVindas();
     }
 
-    private void boasVindas() throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
+	public void cadastraEstacionamento(Estacionamento estacionamento) {
+		this.estacionamentos.add(estacionamento);
+	}
+    
+    
+
+    /*private void boasVindas() throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
         while (this.running) {
             System.out.println("----------------------------------------------------");
             System.out.println("|      Bem-vindo ao sistema de estacionamento!     |");
@@ -169,5 +175,5 @@ public class Programa {
     public static void main(String[] args) throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
         Programa programa = new Programa();
         programa.boasVindas();
-    }
+    }*/
 }
