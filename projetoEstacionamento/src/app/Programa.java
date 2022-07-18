@@ -2,7 +2,6 @@ package app;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 import exceptions.DescricaoEmBrancoException;
 import exceptions.ValorAcessoInvalidoException;
@@ -13,16 +12,13 @@ public class Programa {
 
     public ArrayList<Estacionamento> estacionamentos; 
     public Estacionamento estacionamentoAtual;
-    private Veiculo[] veiculos;
     
-    private Mensalistas mensalistas;
 
     public Programa() throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
         this.estacionamentos = new ArrayList<Estacionamento>();
         /*this.cadastraEstacionamento(new Estacionamento(30.0f, 0.15f, 120f, 0.45f, 600f, 50f, "06:00", "22:00", 300, 0.5f));
         this.cadastraEstacionamento(new Estacionamento(20.0f, 0.1f, 70f, 0.3f, 455f, 60f, "00:00", "00:00", 120, 0.6f));
         this.cadastraEstacionamento(new Estacionamento(10.0f, 0f, 50f, 0.4f, 350f, 40f, "06:00", "22:00", 600, 0.7f));*/
-    	this.mensalistas = new Mensalistas();
     }
 
 	public void cadastraEstacionamento(Estacionamento estacionamento) {
@@ -127,63 +123,8 @@ public class Programa {
 			int opcao = input.nextInt();
 			this.estacionamentoAtual = estacionamentos.get(opcao-1);
 			
-			this.menuOpcoes();
+			this.estacionamentoAtual.menuOpcoes();
 		}
-	}
-    
-    private void menuOpcoes() throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
-    	System.out.println("----------------------------------------------------");
-        System.out.println("|                  Menu de Opções                  |");
-        System.out.println("----------------------------------------------------\n");
-        System.out.println("1 - Cadastrar Mensalista");
-        System.out.println("2 - Cadastrar Evento");
-        System.out.println("3 - Inserir Acesso");
-        System.out.println("4 - Inserir Saída");
-        System.out.println("5 - Calcular valores de repasse");
-        System.out.println("0 - Sair");
-
-        int opcao = input.nextInt();
-
-        switch (opcao) {
-            case 1:
-                this.cadastrarMensalista();
-                break;
-            case 2:
-                // this.estac2.menu();
-                break;
-            case 3:
-                // this.estac3.menu();
-                break;
-            case 4:
-                // this.estac3.menu();
-                break;
-            case 5:
-                // this.estac3.menu();
-                break;
-            case 0:
-                this.running = false;
-                break;
-            default:
-                System.out.println("Opção inválida!");
-                break;
-        }
-                
-    }
-
-    private void cadastrarMensalista() throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
-    	System.out.println("Insira a placa do mensalista: ");
-    	String placaMensalista = input.next();
-    	
-    	Pattern pattern = Pattern.compile("^[A-z]{3}-[0-9]{4}$");
-        if(!pattern.matcher(placaMensalista).find()) {
-            throw new ValorAcessoInvalidoException("Placa");
-        } else if(placaMensalista.isEmpty()) {
-    		throw new DescricaoEmBrancoException("Placa");
-    	} else {
-    		this.mensalistas.cadastraMensalista(placaMensalista);
-    		System.out.println("Mensalista Cadastrado!");
-        	this.menuOpcoes();
-    	}
 	}
     
     public static void main(String[] args) throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
