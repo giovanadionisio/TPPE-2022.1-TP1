@@ -15,6 +15,10 @@ public class AcessoHoraCheia {
 		this.horarioSaida = horarioSaida;
 		this.percentual = percentual;
 	}
+	
+	public boolean contemAcessoHoraCheia(String string) {
+		return true;
+	}
 
 	public float getValorFracao(String string) {
 		return 30.0f;
