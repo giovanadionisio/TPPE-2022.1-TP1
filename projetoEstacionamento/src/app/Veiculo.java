@@ -5,14 +5,19 @@ import java.util.regex.Pattern;
 import exceptions.*;
 
 public class Veiculo {
-private String placa;
+    private String placa;
     public Horario horario;
+    public String tipoAcesso;
 
     public String getPlaca() {
         return this.placa;
     }
     
-    public void cadastraVeiculo(String horarioEntrada, String horarioSaida, String placa) throws ValorAcessoInvalidoException, DescricaoEmBrancoException{
+    public String tipoAcesso() {
+        return this.tipoAcesso;
+    }
+    
+    public void cadastraVeiculo(String horarioEntrada, String horarioSaida, String placa, String tipoAcesso) throws ValorAcessoInvalidoException, DescricaoEmBrancoException{
     	
     	this.horario = new Horario(horarioEntrada,horarioSaida);
     	
@@ -27,6 +32,10 @@ private String placa;
             throw new ValorAcessoInvalidoException("Placa");
         } else {
             this.placa = placa.toUpperCase();
+        }
+        
+        if(tipoAcesso.isEmpty()) {
+            throw new DescricaoEmBrancoException("Tipo Acesso");
         }
     }
 }
