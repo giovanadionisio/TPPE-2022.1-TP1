@@ -1,8 +1,10 @@
 package app;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 import exceptions.DescricaoEmBrancoException;
+import exceptions.ValorAcessoInvalidoException;
 
 public class Programa {
     private boolean running = true;
@@ -15,13 +17,13 @@ public class Programa {
     
     private Mensalistas mensalistas;
 
-    public Programa() throws DescricaoEmBrancoException {
+    public Programa() throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
         this.mensalistas = new Mensalistas();
     	this.cadastraEstacionamentos();
         this.boasVindas();
     }
 
-    private void boasVindas() throws DescricaoEmBrancoException {
+    private void boasVindas() throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
         while (this.running) {
             System.out.println("----------------------------------------------------");
             System.out.println("|      Bem-vindo ao sistema de estacionamento!     |");
@@ -69,7 +71,7 @@ public class Programa {
         estac3.cadastraHorarios("06:00", "22:00");
     }
     
-    private void menuOpcoes() throws DescricaoEmBrancoException {
+    private void menuOpcoes() throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
     	System.out.println("----------------------------------------------------");
         System.out.println("|                  Menu de Opções                  |");
         System.out.println("----------------------------------------------------\n");
@@ -108,18 +110,20 @@ public class Programa {
                 
     }
 
-    private void cadastrarMensalista() throws DescricaoEmBrancoException {
+    private void cadastrarMensalista() throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
     	System.out.println("Insira a placa do mensalista: ");
     	String placaMensalista = input.next();
     	
-    	if(placaMensalista.isEmpty()) {
+    	Pattern pattern = Pattern.compile("^[A-z]{3}-[0-9]{4}$");
+        if(!pattern.matcher(placaMensalista).find()) {
+            throw new ValorAcessoInvalidoException("Placa");
+        } else if(placaMensalista.isEmpty()) {
     		throw new DescricaoEmBrancoException("Placa");
     	} else {
     		this.mensalistas.cadastraMensalista(placaMensalista);
+    		System.out.println("Mensalista Cadastrado!");
+        	this.menuOpcoes();
     	}
-    	
-    	System.out.println("Mensalista Cadastrado!");
-    	this.menuOpcoes();
 	}
 
 	public void calculaAcesso() {
@@ -159,7 +163,7 @@ public class Programa {
         }
     }
 
-    public static void main(String[] args) throws DescricaoEmBrancoException {
+    public static void main(String[] args) throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
         Programa programa = new Programa();
         programa.boasVindas();
     }
