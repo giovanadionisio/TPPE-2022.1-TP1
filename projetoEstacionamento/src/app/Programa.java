@@ -16,9 +16,6 @@ public class Programa {
 
     public Programa() throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
         this.estacionamentos = new ArrayList<Estacionamento>();
-        /*this.cadastraEstacionamento(new Estacionamento(30.0f, 0.15f, 120f, 0.45f, 600f, 50f, "06:00", "22:00", 300, 0.5f));
-        this.cadastraEstacionamento(new Estacionamento(20.0f, 0.1f, 70f, 0.3f, 455f, 60f, "00:00", "00:00", 120, 0.6f));
-        this.cadastraEstacionamento(new Estacionamento(10.0f, 0f, 50f, 0.4f, 350f, 40f, "06:00", "22:00", 600, 0.7f));*/
     }
 
 	public void cadastraEstacionamento(Estacionamento estacionamento) {
@@ -105,9 +102,8 @@ public class Programa {
 				System.out.printf("Horario Abertura: %s\n", estacionamentos.get(i).horarioAbre);
 				System.out.printf("Horario Fechamento: %s\n", estacionamentos.get(i).horarioFecha);
 				System.out.printf("Capacidade: %d\n", estacionamentos.get(i).capacidade);
-				System.out.printf("retorno contratante: %f\n", estacionamentos.get(i).retornoContratante);
-				System.out.println("*******************************************************************\n\n");
-				
+				System.out.printf("Retorno contratante: %f\n", estacionamentos.get(i).retornoContratante);
+				System.out.printf("*******************************************************************\n\n");
 			}
 		}
 	}
@@ -131,46 +127,4 @@ public class Programa {
         Programa programa = new Programa();
         programa.boasVindas();
     }
-    /*
-	public void calculaAcesso() {
-        // (valores do objeto de acesso)
-        String placa = "HI139";
-        String horaEntrada = "8:30";
-        String horaSaida = "8:56";
-        String tipoAcesso = "";
-        float valorAcesso = 60.0f;
-        float valorContratante = 30.0f;
-
-        // total
-        float totalAcesso = 0.0f;
-        float contratante = 0.0f;
-
-        //if (tipoAcesso.equals("Mensalista")) {
-            //contratante = estac1.valorMensalista * estac1.retornoContratante;
-        if (this.mensalistas.ehMensalista(placa)) {
-        	totalAcesso = estac1.valorMensalista; 
-        	// TODO montanteEstacionamento = montanteEstacionamento + totalAcesso;
-        } else if (tipoAcesso.equals("Evento")) {
-            contratante = estac1.valorEvento * estac1.retornoContratante;
-        } else if (tipoAcesso.equals("Noturno")) {
-            totalAcesso = estac1.valorDiaria * estac1.valorDiariaNoturna;
-            contratante = totalAcesso * estac1.retornoContratante;
-        } else {
-            long minutos = new Horario(horaEntrada, horaSaida).calculaMinutos();
-
-            int tempo = (int) Math.round(minutos / 15.0);
-            System.out.println(tempo + "");
-
-            if (Math.abs(tempo) < 4) {
-                totalAcesso = estac1.valorFracao * tempo;
-                contratante = totalAcesso * estac1.retornoContratante;
-                System.out.println(totalAcesso + "");
-                System.out.println(contratante + "");
-            } else {
-                // Realiza calculo quando é igual ou mais de 1 hora (frações de 15 min)
-            }
-        }
-    }
-
-    */
 }
