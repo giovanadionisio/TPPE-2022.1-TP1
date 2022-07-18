@@ -17,31 +17,6 @@ public class Programa {
     	this.cadastraEstacionamentos();
     }
     
-    private String placa;
-    public Horario horario;
-
-    public String getPlaca() {
-        return this.placa;
-    }
-    
-    public void cadastraAcesso(String horarioEntrada, String horarioSaida, String placa) throws ValorAcessoInvalidoException, DescricaoEmBrancoException{
-    	
-    	this.horario = new Horario(horarioEntrada,horarioSaida);
-    	
-    	placa = placa.trim();
-        if(placa.isEmpty()) {
-            throw new DescricaoEmBrancoException("Placa");
-        }
-        
-        //formato placa "antiga"
-        Pattern pattern = Pattern.compile("^[A-z]{3}-[0-9]{4}$");
-        if(!pattern.matcher(placa).find()) {
-            throw new ValorAcessoInvalidoException("Placa");
-        } else {
-            this.placa = placa.toUpperCase();
-        }
-    }
-    
     private void cadastraEstacionamentos() {
         this.estac1 = new Estacionamento(30.0f, 0.15f, 120.0f, 0.45f);
         estac1.cadastraValoresSecundarios(600.0f, 50.0f, 300, 0.5f);
