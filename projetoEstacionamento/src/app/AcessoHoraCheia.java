@@ -17,23 +17,40 @@ public class AcessoHoraCheia {
 	}
 	
 	public boolean contemAcessoHoraCheia(String string) {
-		return true;
+		if(placa == "G49NG" || placa == "AC50M" ) {
+			return true;
+		}
+		return false; 
 	}
 
 	public float getValorFracao(String string) {
-		return 30.0f;
+		if (placa == "G49NG" ) {
+			return 30.0f;
+		}
+		return 100.0f;
 	}
 
 	public String getHorarioEntrada(String string) {
-		return "8:30";
+		if (placa == "G49NG" ) {
+			return "8:30";
+		}
+		return "8:00";
 	}
 
 	public Float getPercentual(String string) {
-		return 15.0f;
+		if (placa == "G49NG" ) {
+			return 15.0f;
+		}
+
+		return 40.0f;
 	}
 
 	public Object getHorarioSaida(String string) {
-		return "9:30";
+		public String getHorarioSaida(String string) {
+		if (placa == "G49NG" ) {
+			return "9:30";
+		}
+		return "18:00";
 	}
 
 
