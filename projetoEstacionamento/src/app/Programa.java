@@ -12,12 +12,16 @@ public class Programa {
     private Scanner input = new Scanner(System.in);
 
     public ArrayList<Estacionamento> estacionamentos; 
+    public Estacionamento estacionamentoAtual;
     private Veiculo[] veiculos;
     
     private Mensalistas mensalistas;
 
     public Programa() throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
         this.estacionamentos = new ArrayList<Estacionamento>();
+        this.cadastraEstacionamento(new Estacionamento(30.0f, 0.15f, 120f, 0.45f, 600f, 50f, "06:00", "22:00", 300, 0.5f));
+        this.cadastraEstacionamento(new Estacionamento(20.0f, 0.1f, 70f, 0.3f, 455f, 60f, "00:00", "00:00", 120, 0.6f));
+        this.cadastraEstacionamento(new Estacionamento(10.0f, 0f, 50f, 0.4f, 350f, 40f, "06:00", "22:00", 600, 0.7f));
 //    	this.mensalistas = new Mensalistas();
 //    	this.cadastraEstacionamentos();
 //        this.boasVindas();
@@ -29,15 +33,15 @@ public class Programa {
     
     
 
-    /*private void boasVindas() throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
+    private void boasVindas() throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
         while (this.running) {
             System.out.println("----------------------------------------------------");
             System.out.println("|      Bem-vindo ao sistema de estacionamento!     |");
             System.out.println("----------------------------------------------------\n");
-            System.out.println("Para começar, digite o número do estacionamento que deseja utilizar:");
-            System.out.println("1 - Estacionamento 1");
-            System.out.println("2 - Estacionamento 2");
-            System.out.println("3 - Estacionamento 3");
+            System.out.println("Para começar, selecione a opção desejada:");
+            System.out.println("1 - Cadastrar Estacionamento");
+            System.out.println("2 - Selecionar Estacionamento Existente");
+            System.out.println("3 - Ver dados dos Estacionamentos Cadastrados");
             System.out.println("0 - Sair");
 
             int opcao = input.nextInt();
@@ -45,13 +49,13 @@ public class Programa {
             switch (opcao) {
                 case 1:
                     // this.estac1.menu();
-                	this.menuOpcoes();
+                	//this.menuOpcoes();
                     break;
                 case 2:
-                    // this.estac2.menu();
+                    this.selecionaEstacionamento();
                     break;
                 case 3:
-                    // this.estac3.menu();
+                    this.visualizarEstacionamentos();
                     break;
                 case 0:
                     this.running = false;
@@ -62,19 +66,45 @@ public class Programa {
             }
         }
     }
+    
+    private void visualizarEstacionamentos() {
+    	for (int i = 0; i < estacionamentos.size(); i++) {
+			System.out.printf("Estacionamento %d\n", i+1);
+			System.out.printf("Valor fração: %f\n", estacionamentos.get(i).valorFracao);
+			System.out.printf("Valor hora cheia: %f\n", estacionamentos.get(i).valorHoraCheia);
+			System.out.printf("Valor diária diurna: %f\n", estacionamentos.get(i).valorDiaria);
+			System.out.printf("Valor diária noturna: %f\n", estacionamentos.get(i).valorDiariaNoturna);
+			System.out.printf("Valor acesso mensalista: %f\n", estacionamentos.get(i).valorMensalista);
+			System.out.printf("Valor acesso evento: %f\n", estacionamentos.get(i).valorEvento);
+			System.out.printf("Horario Abertura: %s\n", estacionamentos.get(i).horarioAbre);
+			System.out.printf("Horario Fechamento: %s\n", estacionamentos.get(i).horarioFecha);
+			System.out.printf("Capacidade: %d\n", estacionamentos.get(i).capacidade);
+			System.out.printf("retorno contratante: %f\n", estacionamentos.get(i).retornoContratante);
+			System.out.println("*******************************************************************\n\n");
+			
+		}
+		
+	}
 
-    private void cadastraEstacionamentos() {
-        this.estac1 = new Estacionamento(30.0f, 0.15f, 120.0f, 0.45f);
-        estac1.cadastraValoresSecundarios(600.0f, 50.0f, 300, 0.5f);
-        estac1.cadastraHorarios("06:00", "22:00");
+	private void selecionaEstacionamento() throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
+		if(this.estacionamentos.size() == 0) {
+			System.out.println("Nenhum estacionamento cadastrado!\n\n");
+			this.boasVindas();
+		} else {
+			for (int i = 0; i < estacionamentos.size(); i++) {
+				System.out.printf("%d - Estacionamento %d\n",i+1, i+1);
+			}
+			
+			int opcao = input.nextInt();
+			this.estacionamentoAtual = estacionamentos.get(opcao-1);
+			
+			this.menuOpcoes();
+		}
+	}
 
-        this.estac2 = new Estacionamento(20.0f, 0.10f, 70.0f, 0.30f);
-        estac2.cadastraValoresSecundarios(455.0f, 60.0f, 120, 0.6f);
-        estac2.cadastraHorarios("00:00", "23:59");
-
-        this.estac3 = new Estacionamento(10.0f, 0.0f, 50.0f, 0.40f);
-        estac3.cadastraValoresSecundarios(350.0f, 40.0f, 600, 0.7f);
-        estac3.cadastraHorarios("06:00", "22:00");
+	public static void main(String[] args) throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
+        Programa programa = new Programa();
+        programa.boasVindas();
     }
     
     private void menuOpcoes() throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
@@ -131,7 +161,8 @@ public class Programa {
         	this.menuOpcoes();
     	}
 	}
-
+    
+    /*
 	public void calculaAcesso() {
         // (valores do objeto de acesso)
         String placa = "HI139";
@@ -172,8 +203,5 @@ public class Programa {
         }
     }
 
-    public static void main(String[] args) throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
-        Programa programa = new Programa();
-        programa.boasVindas();
-    }*/
+    */
 }
