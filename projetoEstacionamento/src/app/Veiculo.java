@@ -5,14 +5,14 @@ import java.util.regex.Pattern;
 import exceptions.*;
 
 public class Veiculo {
-	  private String placa;
+private String placa;
     public Horario horario;
 
     public String getPlaca() {
         return this.placa;
     }
     
-    public void cadastraAcesso(String horarioEntrada, String horarioSaida, String placa) throws ValorAcessoInvalidoException, DescricaoEmBrancoException{
+    public void cadastraVeiculo(String horarioEntrada, String horarioSaida, String placa) throws ValorAcessoInvalidoException, DescricaoEmBrancoException{
     	
     	this.horario = new Horario(horarioEntrada,horarioSaida);
     	
