@@ -1,6 +1,9 @@
 package app;
+import java.util.Scanner;
 
 public class Estacionamento {
+	private Scanner input = new Scanner(System.in);
+	
 	public float valorFracao = 0.0f;
 	public float valorHoraCheia = 0.0f;
 	public float valorDiaria = 0.0f;
@@ -12,6 +15,7 @@ public class Estacionamento {
 	public String horarioEntrada = "";
 	public String horarioSaida = "";
 	public int capacidade = 0;
+	public int capacidadeAtual = 0;
 	
 	public float retornoContratante = 0.0f;
 	
@@ -42,4 +46,21 @@ public class Estacionamento {
 		this.horarioSaida = horarioSaida;
 	}
 	
+	public void cadastraAcesso(){
+  
+		System.out.println("Digite a hora de entrada do veículo:");
+		String horaEntrada = input.next();
+
+		System.out.println("Digite a hora de saida do veículo:");
+		String horaSaida = input.next();
+
+		System.out.println("Digite a placa do veículo:");
+		String placa = input.next();
+
+		System.out.println("Digite o tipo de acesso desejado:");
+		String tipoAcesso = input.next();
+		
+		veiculos[this.capacidadeAtual] = new Veiculo(horarioEntrada,horarioSaida,placa,tipoAcesso);
+		this.capacidadeAtual++;
+	}
 }
