@@ -16,6 +16,7 @@ public class Estacionamento {
 	public String horarioSaida = "";
 	public int capacidade = 0;
 	public int capacidadeAtual = 0;
+	private Veiculo[] veiculos;
 	
 	public float retornoContratante = 0.0f;
 	
