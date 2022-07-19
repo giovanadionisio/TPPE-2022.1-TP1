@@ -188,7 +188,7 @@ public class Estacionamento {
                 this.novoAcesso();
                 break;
             case 4:
-                // this.estac3.menu();
+                this.saida();
                 break;
             case 5:
                 // this.estac3.menu();
@@ -205,6 +205,28 @@ public class Estacionamento {
         }
                 
     }
+
+	private void saida() throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
+		if(this.veiculos.size() == 0) {
+			System.out.println("Nenhum veículo cadastrado");
+		} else {
+			System.out.println("Selecione o veículo");
+			for (int i = 0; i < this.veiculos.size(); i++) {
+				System.out.printf("%d - Placa: %s | Entrada: %s", i+1, this.veiculos.get(i).placa, this.veiculos.get(i).horario.horario1);
+			}
+			int op = input.nextInt();
+			
+			if(this.veiculos.get(op-1).ehEvento) {
+				System.out.printf("Valor de evento (R$%.2f)\n", this.valorEvento);
+			} else if (this.mensalistas.ehMensalista(this.veiculos.get(op-1).placa)) {
+				System.out.printf("Valor de mensalista (R$%.2f mensais)\n", this.valorMensalista);
+			}
+			
+			this.menuOpcoes();
+			
+		}
+		
+	}
 
 	private void novoAcesso() throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
 		if(this.veiculos.size() == this.capacidade) {

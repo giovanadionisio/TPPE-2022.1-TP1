@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 import exceptions.*;
 
 public class Veiculo {
-    private String placa;
+    public String placa;
     public Horario horario;
     public Boolean ehEvento;
     
@@ -13,6 +13,7 @@ public class Veiculo {
     	this.placa = p;
     	this.horario = new Horario();
     	this.horario.horario1 = hi;
+    	ehEvento = false;
     }
 
 	
