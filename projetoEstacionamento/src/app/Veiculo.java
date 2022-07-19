@@ -15,6 +15,11 @@ public class Veiculo {
     	this.horario.horario1 = hi;
     	ehEvento = false;
     }
+    
+    public Veiculo(String p, Boolean ehEvento) {
+    	this.placa = p;
+    	this.ehEvento = ehEvento;
+    }
 
 	
     

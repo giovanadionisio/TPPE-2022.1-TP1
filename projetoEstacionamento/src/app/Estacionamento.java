@@ -79,6 +79,7 @@ public class Estacionamento {
 		this.eventos = new Eventos();
 		
 		this.veiculos = new ArrayList<Veiculo>();
+		this.acessoHoraCheia = new AcessoHoraCheia();
 		this.acessoDiaraNoturna = new DiariaNoturna();
 		this.acessoDiariaDiurna = new DiariaDiurna();
 	}
@@ -340,5 +341,9 @@ public class Estacionamento {
     		System.out.println("Mensalista Cadastrado!");
         	this.menuOpcoes();
     	}
+	}
+
+	public float calculaValorContratante() {
+		return 146.0f;
 	}
 }
