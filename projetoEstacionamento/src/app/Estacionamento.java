@@ -29,6 +29,9 @@ public class Estacionamento {
 	public float retornoContratante;
 	
 	public ArrayList<Veiculo> veiculos;
+	public AcessoHoraCheia acessoHoraCheia;
+	public DiariaNoturna acessoDiaraNoturna;
+	public DiariaDiurna acessoDiariaDiurna;
 	
 	public Estacionamento() {
 		this.valorFracao = 0.0f;
@@ -50,6 +53,9 @@ public class Estacionamento {
 		this.eventos = new Eventos();
 		
 		this.veiculos = new ArrayList<Veiculo>();
+		this.acessoHoraCheia = new AcessoHoraCheia();
+		this.acessoDiaraNoturna = new DiariaNoturna();
+		this.acessoDiariaDiurna = new DiariaDiurna();
 	}
 	
 	public Estacionamento(float valorFracao, float valorHoraCheia, float valorDiaria, float valorDiariaNoturna, 
@@ -73,6 +79,8 @@ public class Estacionamento {
 		this.eventos = new Eventos();
 		
 		this.veiculos = new ArrayList<Veiculo>();
+		this.acessoDiaraNoturna = new DiariaNoturna();
+		this.acessoDiariaDiurna = new DiariaDiurna();
 	}
 
 	public void setValorFracao(float valorFracao) throws ValorAcessoInvalidoException {
@@ -220,6 +228,29 @@ public class Estacionamento {
 				System.out.printf("Valor de evento (R$%.2f)\n", this.valorEvento);
 			} else if (this.mensalistas.ehMensalista(this.veiculos.get(op-1).placa)) {
 				System.out.printf("Valor de mensalista (R$%.2f mensais)\n", this.valorMensalista);
+			} else {
+				System.out.printf("Insira o horário de saída (HH:mi)\n");
+				String hf = input.next();
+				this.veiculos.get(op-1).horario.horario2 = hf;
+				
+				Horario h1 = new Horario("20:00", this.veiculos.get(op-1).horario.horario1);
+				Horario h2 = new Horario(this.veiculos.get(op-1).horario.horario2, "08:00");
+				
+				System.out.print(h1.horario1);
+				System.out.print(h1.horario2);
+				System.out.print(h2.horario1);
+				System.out.print(h2.horario2);
+				
+				if (h1.calculaMinutos() > 0 && h2.calculaMinutos() > 0) {
+					this.acessoDiaraNoturna.cadastraDiariaNoturna(this.veiculos.get(op-1).placa, this.valorDiaria, this.veiculos.get(op-1).horario.horario1, this.veiculos.get(op-1).horario.horario2, this.valorDiariaNoturna);
+					System.out.printf("Diaria Norturna %f\n", this.acessoDiaraNoturna.getValorDiariaNoturna(this.veiculos.get(op-1).placa));
+				} else if (this.veiculos.get(op-1).horario.calculaMinutos() >= 360) {
+					this.acessoDiariaDiurna.cadastraDiariaDiurna(this.veiculos.get(op-1).placa, this.valorDiaria, this.veiculos.get(op-1).horario.horario1, this.veiculos.get(op-1).horario.horario2);
+					System.out.printf("Diaria Diurna %f\n", this.acessoDiariaDiurna.getValorDiaria(this.veiculos.get(op-1).placa));
+				} else {
+					this.acessoHoraCheia.cadastraAcessoHoraCheia(this.veiculos.get(op-1).placa, this.valorFracao, this.veiculos.get(op-1).horario.horario1, this.veiculos.get(op-1).horario.horario2, this.valorHoraCheia);
+					System.out.printf("Hora Cheia %f\n", this.acessoHoraCheia.getValorAcessoHoraCheia(this.veiculos.get(op-1).placa));
+				}
 			}
 			
 			this.menuOpcoes();
