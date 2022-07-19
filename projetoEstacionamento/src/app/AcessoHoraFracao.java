@@ -1,59 +1,89 @@
 package app;
 
+import java.util.ArrayList;
+
 public class AcessoHoraFracao {
-	private String placa;
-	private Float valorDiariaDiurna;
-	private String horaEntrada; 
-	private String horaSaida; 
-	private Float retornoContratante;
 
-	public void cadastraHoraFracao(String placa, String horaEntrada, String horaSaida, float valorDiariaDiurna, float retornoContratante) {
-		this.placa = placa;
-		this.horaEntrada = horaEntrada;
-		this.horaSaida = horaSaida;
-        this.valorDiariaDiurna = valorDiariaDiurna;
-		this.retornoContratante = retornoContratante;
+	ArrayList<String> placa;
+	ArrayList<String> horaEntrada; 
+	ArrayList<String> horaSaida;
+	ArrayList<Float> valorFracao;
+	ArrayList<Float> retornoContratante;
+
+    public AcessoHoraFracao() {
+		this.placa = new ArrayList<String>();
+		this.horaEntrada = new ArrayList<String>();
+		this.horaSaida = new ArrayList<String>();
+        this.valorFracao = new ArrayList<Float>();
+		this.retornoContratante = new ArrayList<Float>();
 	}
 
-	public boolean contemHoraFracao(String string) {
-        if (placa == "ME4YOU" || placa == "HEY1DUD" ) {
-			return true;
-		}
-		return false;
+	public void cadastraHoraFracao(String placa, String horaEntrada, String horaSaida, float valorFracao, float retornoContratante) {
+		this.placa.add(placa);
+		this.horaEntrada.add(horaEntrada);
+		this.horaSaida.add(horaSaida);
+        this.valorFracao.add(valorFracao);
+		this.retornoContratante.add(retornoContratante);
 	}
 
-	public String getHoraEntrada(String string) {
-        if (placa == "HEY1DUD" ) {
-			return "09:00";
+	public boolean contemHoraFracao(String placa) {
+		boolean booleano = false; 
+		for (String p: this.placa) {
+			if (p.equalsIgnoreCase(placa))
+				return true;
 		}
-		return "08:30";
+		return booleano;
 	}
 
-    public Object getHoraSaida(String string) {
-        if (placa == "HEY1DUD" ) {
-			return "09:15";
-		}
-		return "08:56";
+	public String getHoraEntrada(String placa) {
+        int pos = 0;
+		for (String p: this.placa) {
+			if (p.equalsIgnoreCase(placa))
+				pos = p.indexOf(placa);
+        }
+		return this.horaEntrada.get(pos);
 	}
 
-	public Float getValorHoraFracao(String string) {
-        if (placa == "HEY1DUD" ) {
-			return 20.0f;
+    public Object getHoraSaida(String placa) {
+    	int pos = 0;
+		for (String p: this.placa) {
+			if (p.equalsIgnoreCase(placa))
+				pos = p.indexOf(placa);
 		}
-		return 30.0f;
+		return this.horaSaida.get(pos);
 	}
 
-    public Float getValorDiariaDiurna(String string) {
-        if (placa == "HEY1DUD" ) {
-			return 70.0f;
+    public Float getValorFracao(String placa) {
+    	int pos = 0;
+		for (String p: this.placa) {
+			if (p.equalsIgnoreCase(placa))
+				pos = p.indexOf(placa);
 		}
-		return 120.0f;
+		return this.valorFracao.get(pos);
 	}
 
-    public Float getRetornoContratante(String string) {
-        if (placa == "HEY1DUD" ) {
-			return 60.0f;
+    public Float getRetornoContratante(String placa) {
+    	int pos = 0;
+		for (String p: this.placa) {
+			if (p.equalsIgnoreCase(placa))
+				pos = p.indexOf(placa);
 		}
-		return 50.0f;
+		return this.retornoContratante.get(pos);
+	}
+    
+    public Float getValorAcessoHoraFracao(String placa) {
+		int pos = 0;
+		for (String p: this.placa) {
+			if (p.equalsIgnoreCase(placa))
+				pos = p.indexOf(placa);
+		}
+
+		long minutos = new Horario(horaEntrada.get(pos), horaSaida.get(pos)).calculaMinutos();
+		System.out.println(minutos);
+        int tempo = (int) Math.round(minutos / 15.0);
+
+        float valorAcesso = valorFracao.get(pos) * tempo;
+		
+		return valorAcesso;
 	}
 }
