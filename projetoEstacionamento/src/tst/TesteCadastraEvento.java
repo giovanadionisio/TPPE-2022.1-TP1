@@ -7,6 +7,7 @@ import java.util.Collection;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
@@ -39,6 +40,7 @@ public class TesteCadastraEvento {
 	}
 
 	@Test
+	@Category(TesteFuncional.class)
 	public void cadastraEventos() {
 		for (String s[] : dados) {
 			assertTrue(eventos.cadastraEvento(s[0], s[1], s[2], s[3]));
