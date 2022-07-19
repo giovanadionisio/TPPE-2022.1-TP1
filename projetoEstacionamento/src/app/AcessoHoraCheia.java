@@ -29,6 +29,13 @@ public class AcessoHoraCheia {
 		}
 		return 20.0f;
 	}
+	
+	public Float getValorAcessoHoraCheia(String string) {
+		if (placa == "G49NG" ) {
+			return 102.0f;
+		}
+		return 216.0f;
+	}
 
 	public String getHorarioEntrada(String string) {
 		if (placa == "G49NG" ) {

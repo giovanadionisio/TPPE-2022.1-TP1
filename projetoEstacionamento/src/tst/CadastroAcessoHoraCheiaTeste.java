@@ -24,6 +24,7 @@ public class CadastroAcessoHoraCheiaTeste {
 		assertEquals(acessoHoraCheia.getHorarioEntrada("G49NG"), "8:30");
 		assertEquals(acessoHoraCheia.getHorarioSaida("G49NG"),  "9:30");
 		assertEquals(acessoHoraCheia.getPercentual("G49NG"),  15, 0.1f);
+		assertEquals(acessoHoraCheia.getValorAcessoHoraCheia("G49NG"),  102.0f , 0.1f);
 	}
 
 	@Test
@@ -34,5 +35,6 @@ public class CadastroAcessoHoraCheiaTeste {
 		assertEquals(acessoHoraCheia.getHorarioEntrada("AC50M"), "8:00");
 		assertEquals(acessoHoraCheia.getHorarioSaida("AC50M"),  "11:00");
 		assertEquals(acessoHoraCheia.getPercentual("AC50M"),  10, 0.1f);
+		assertEquals(acessoHoraCheia.getValorAcessoHoraCheia("AC50M"),  216.0f , 0.1f);
 	}
 }
