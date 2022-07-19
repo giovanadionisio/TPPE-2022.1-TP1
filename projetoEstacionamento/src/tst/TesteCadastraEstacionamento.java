@@ -8,6 +8,7 @@ import java.util.Collection;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
@@ -46,6 +47,7 @@ public class TesteCadastraEstacionamento {
 	
 
 	@Test
+	@Category(TesteFuncional.class)
 	public void testeCadastraEstacionamentos() throws ValorAcessoInvalidoException, DescricaoEmBrancoException {
 		for (Estacionamento e : estacionamentos) {
 			programa.cadastraEstacionamento(e);

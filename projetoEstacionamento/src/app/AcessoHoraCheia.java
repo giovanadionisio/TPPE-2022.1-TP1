@@ -51,9 +51,10 @@ public class AcessoHoraCheia {
 				pos = p.indexOf(placa);
 		}
 		
-		float valor = (this.valorFracao.get(pos)*4) * (1 - (this.percentual.get(pos)/100.0f));
-		
-		return valor;
+		long minutos = new Horario(horarioEntrada.get(pos),horarioSaida.get(pos)).calculaMinutos();
+       		float valor = ((minutos/60) * 4 * (1 -  (this.percentual.get(pos)/100.0f)) * this.valorFracao.get(pos));
+
+        	return valor;
 	}
 
 	public String getHorarioEntrada(String placa) {

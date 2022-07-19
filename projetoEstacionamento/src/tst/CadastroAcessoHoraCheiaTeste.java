@@ -30,7 +30,7 @@ public class CadastroAcessoHoraCheiaTeste {
 		Object[][] parameters = new Object[][] {
 			{"G49NG",30.0f, "8:30", "9:30", 15, 102.0f },
 			{"AC50M",20.0f, "8:00", "11:00", 10, 216.0f },
-			{"AM31J",10.0f, "12:00", "16:00", 0, 40.0f }
+			{"AM31J",10.0f, "12:00", "16:00", 0, 160.0f }
 		};
 
 		return Arrays.asList(parameters);

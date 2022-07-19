@@ -14,7 +14,7 @@ import org.junit.runners.Parameterized.Parameters;
 import app.AcessoHoraFracao;
 
 @RunWith(Parameterized.class)
-public class CadastroHoraFracaoTeste {
+public class CadastroAcessoHoraFracaoTeste {
 	
 	AcessoHoraFracao horaFracao;
 
@@ -37,7 +37,7 @@ public class CadastroHoraFracaoTeste {
 		return Arrays.asList(parameters);
 	}
 
-    public CadastroHoraFracaoTeste(String placa, String horaEntrada, String horaSaida, float valorFracao, float retornoContratante, float valorAcessoHoraParcial) {
+    public CadastroAcessoHoraFracaoTeste(String placa, String horaEntrada, String horaSaida, float valorFracao, float retornoContratante, float valorAcessoHoraParcial) {
 		this.placa = placa;
 		this.horaEntrada = horaEntrada;
 		this.horaSaida = horaSaida;

@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
@@ -53,6 +54,7 @@ public class CadastroDiariaNoturnaTeste {
 	
 	
 	@Test
+	@Category(TesteFuncional.class)
 	public void testCadastraDiariaNoturna() {
 		diariaNoturna.cadastraDiariaNoturna(placa,valorDiariaDiurna, horarioEntrada, horarioSaida, percentual);
 		assertTrue(diariaNoturna.contemDiariaNoturna(placa));

@@ -7,6 +7,7 @@ import java.util.Collection;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
@@ -40,6 +41,7 @@ public class TesteAcessaEvento {
 	}
 
 	@Test
+	@Category(TesteFuncional.class)
 	public void testaExisteEvento() {
 		eventos.cadastraEvento("FlaXFlu", "9:00", "13:00", "17/07/2022");
 		assertTrue(eventos.existeEvento("FLAXFLU", "17/07/2022"));
