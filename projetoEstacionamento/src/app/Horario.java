@@ -9,6 +9,11 @@ public class Horario {
 	public String horario1;
 	public String horario2;
 	
+	public Horario() {
+		this.horario1 = "";
+		this.horario2 = "";
+	}
+	
 	public Horario(String horario1, String horario2) {
 		format = new SimpleDateFormat("HH:mm");
 		this.horario1 = horario1;
