@@ -7,6 +7,7 @@ import java.util.Collection;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
@@ -40,6 +41,7 @@ public class TesteCadastraMensalista {
 	}
 	
 	@Test
+	@Category(TesteFuncional.class)
 	public void cadastraMensalista() {
 		for (int i = 0; i < placas.length-1; i++) {
 			mensalistas.cadastraMensalista(placas[i]);
