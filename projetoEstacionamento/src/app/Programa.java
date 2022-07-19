@@ -16,6 +16,7 @@ public class Programa {
 
     public Programa() throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
         this.estacionamentos = new ArrayList<Estacionamento>();
+        this.cadastraEstacionamento(new Estacionamento(30.0f, 0.15f, 120f, 0.45f, 600f, 50f, "06:00", "22:00", 300, 0.5f));
     }
 
 	public void cadastraEstacionamento(Estacionamento estacionamento) {
@@ -126,5 +127,6 @@ public class Programa {
     public static void main(String[] args) throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
         Programa programa = new Programa();
         programa.boasVindas();
+        
     }
 }

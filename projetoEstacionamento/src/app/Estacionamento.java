@@ -24,6 +24,7 @@ public class Estacionamento {
 	public int lotacao;
 	
 	private Mensalistas mensalistas;
+	private Eventos eventos;
 	
 	public float retornoContratante;
 	
@@ -43,6 +44,7 @@ public class Estacionamento {
 		this.retornoContratante = 0.0f;
 		
 		this.mensalistas = new Mensalistas();
+		this.eventos = new Eventos();
 	}
 	
 	public Estacionamento(float valorFracao, float valorHoraCheia, float valorDiaria, float valorDiariaNoturna, 
@@ -61,6 +63,9 @@ public class Estacionamento {
 		this.setHorarioFecha(horarioFecha);
 		this.setCapacidade(capacidade);
 		this.setRetornoContratante(retornoContratante);
+		
+		this.mensalistas = new Mensalistas();
+		this.eventos = new Eventos();
 	}
 
 	public void setValorFracao(float valorFracao) throws ValorAcessoInvalidoException {
@@ -160,6 +165,7 @@ public class Estacionamento {
         System.out.println("3 - Inserir Acesso");
         System.out.println("4 - Inserir Saída");
         System.out.println("5 - Calcular valores de repasse");
+        System.out.println("6 - Listar Eventos");
         System.out.println("0 - Sair");
 
         int opcao = input.nextInt();
@@ -169,7 +175,7 @@ public class Estacionamento {
                 this.cadastrarMensalista();
                 break;
             case 2:
-                // this.estac2.menu();
+                this.cadastrarEvento();
                 break;
             case 3:
                 // this.estac3.menu();
@@ -180,6 +186,9 @@ public class Estacionamento {
             case 5:
                 // this.estac3.menu();
                 break;
+            case 6:
+                this.listaEventos();
+                break;
             case 0:
                 // this.running = false;
                 break;
@@ -189,6 +198,37 @@ public class Estacionamento {
         }
                 
     }
+
+	private void listaEventos() throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
+		if (this.eventos.eventos.size() == 0) {
+			System.out.println("Nenhum evento cadastrado!\n\n");
+			this.menuOpcoes();
+		} else {
+			for (int i = 0; i < this.eventos.eventos.size(); i++) {
+				System.out.printf("%s | Início %s | Fim %s\n", eventos.eventos.get(i).nome, eventos.eventos.get(i).horaInicio, eventos.eventos.get(i).horaFim);
+				System.out.printf("****************************\n\n");
+			}
+			this.menuOpcoes();
+		}
+		
+	}
+
+	private void cadastrarEvento() throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
+		System.out.println("Insira o nome do evento:");
+		String n = input.next();
+		System.out.println("Insira o horário de início do evento (HH:mm):");
+		String hi = input.next();
+		System.out.println("Insira o horário de fim do evento (HH:mm):");
+		String hf = input.next();
+		
+		if (this.eventos.cadastraEvento(n, hi, hf)) {
+			System.out.println("Evento cadastrado!");
+			this.menuOpcoes();
+		} else {
+			System.out.println("Nome já utilizado!");
+			this.cadastrarEvento();
+		}
+	}
 
 	private void cadastrarMensalista() throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
     	System.out.println("Insira a placa do mensalista: ");

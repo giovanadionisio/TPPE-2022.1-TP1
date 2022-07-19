@@ -6,10 +6,9 @@ public class Evento {
 	String horaFim;
 	String data;
 	
-	public Evento(String n, String hi, String hf, String d) {
+	public Evento(String n, String hi, String hf) {
 		this.nome = n;
 		this.horaInicio = hi;
 		this.horaFim = hf;
-		this.data = d;
 	}
 }
