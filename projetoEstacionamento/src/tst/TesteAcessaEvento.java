@@ -43,20 +43,20 @@ public class TesteAcessaEvento {
 	@Test
 	@Category(TesteFuncional.class)
 	public void testaExisteEvento() {
-		eventos.cadastraEvento("FlaXFlu", "9:00", "13:00", "17/07/2022");
-		assertTrue(eventos.existeEvento("FLAXFLU", "17/07/2022"));
-		assertEquals(eventos.getHorarioInicio("FLAXFLU", "17/07/2022"), "9:00");
-		assertEquals(eventos.getHorarioFim("FLAXFLU", "17/07/2022"), "13:00");
+		eventos.cadastraEvento("FlaXFlu", "9:00", "13:00");
+		assertTrue(eventos.existeEvento("FLAXFLU"));
+		assertEquals(eventos.getHorarioInicio("FLAXFLU"), "9:00");
+		assertEquals(eventos.getHorarioFim("FLAXFLU"), "13:00");
 		
 		for (String s[] : dados) {
-			eventos.cadastraEvento(s[0], s[1], s[2], s[3]);
+			eventos.cadastraEvento(s[0], s[1], s[2]);
 		}
 		
 		for (String s[] : dados) {
-			assertTrue(eventos.existeEvento(s[0], s[3]));
+			assertTrue(eventos.existeEvento(s[0]));
 			
-			assertEquals(eventos.getHorarioInicio(s[0], s[3]), s[1]);
-			assertEquals(eventos.getHorarioFim(s[0], s[3]), s[2]);
+			assertEquals(eventos.getHorarioInicio(s[0]), s[1]);
+			assertEquals(eventos.getHorarioFim(s[0]), s[2]);
 		}
 		
 	}

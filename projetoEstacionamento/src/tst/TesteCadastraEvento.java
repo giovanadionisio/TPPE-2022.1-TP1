@@ -27,9 +27,9 @@ public class TesteCadastraEvento {
 	@Parameters 
 	public static Collection<Object[]> getParameters(){
 		Object[][] parametros = new Object [][] {
-			{new String[][] {{"FlaXFlu", "9:00", "13:00", "17/07/2022"}}},
-			{new String[][] {{"FlaXFlu", "9:00", "13:00", "17/07/2022"}, {"FlaXCam", "9:00", "13:00", "17/07/2022"}}},
-			{new String[][] {{"FlaXFlu", "9:00", "13:00", "17/07/2022"}, {"FlaXCam", "9:00", "13:00", "17/07/2022"}, {"FlaXVas", "14:00", "18:00", "17/07/2022"}}}
+			{new String[][] {{"FlaXFlu", "9:00", "13:00"}}},
+			{new String[][] {{"FlaXFlu", "9:00", "13:00"}, {"FlaXCam", "9:00", "13:00"}}},
+			{new String[][] {{"FlaXFlu", "9:00", "13:00"}, {"FlaXCam", "9:00", "13:00"}, {"FlaXVas", "14:00", "18:00", "17/07/2022"}}}
 		};
 		
 		return Arrays.asList(parametros);
@@ -43,7 +43,7 @@ public class TesteCadastraEvento {
 	@Category(TesteFuncional.class)
 	public void cadastraEventos() {
 		for (String s[] : dados) {
-			assertTrue(eventos.cadastraEvento(s[0], s[1], s[2], s[3]));
+			assertTrue(eventos.cadastraEvento(s[0], s[1], s[2]));
 		}
 	}
 
