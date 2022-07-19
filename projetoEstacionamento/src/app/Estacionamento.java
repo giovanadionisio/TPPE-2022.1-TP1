@@ -344,6 +344,21 @@ public class Estacionamento {
 	}
 
 	public float calculaValorContratante() {
-		return 146.0f;
+		float montante = 0.0f;
+		for (Veiculo v : veiculos) {
+			if (v.ehEvento) {
+				montante = montante + this.valorEvento;
+			}
+		}
+		
+		for (String s : this.acessoDiaraNoturna.placa) {
+			montante = montante + this.acessoDiaraNoturna.getValorDiariaNoturna(s);
+		}
+		
+		for (String s : this.acessoHoraCheia.placa) {
+			montante = montante + this.acessoHoraCheia.getValorAcessoHoraCheia(s);
+		}
+		
+		return montante;
 	}
 }
