@@ -82,6 +82,8 @@ public class Estacionamento {
 		this.acessoHoraCheia = new AcessoHoraCheia();
 		this.acessoDiaraNoturna = new DiariaNoturna();
 		this.acessoDiariaDiurna = new DiariaDiurna();
+		
+		this.veiculos.add(new Veiculo("ABC-1234", "08:30"));
 	}
 
 	public void setValorFracao(float valorFracao) throws ValorAcessoInvalidoException {

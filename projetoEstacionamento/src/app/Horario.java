@@ -10,6 +10,7 @@ public class Horario {
 	public String horario2;
 	
 	public Horario() {
+		format = new SimpleDateFormat("HH:mm");
 		this.horario1 = "";
 		this.horario2 = "";
 	}
@@ -25,8 +26,8 @@ public class Horario {
         Date date2 = null;
         
 		try {
-			date1 = format.parse(horario1);
-			date2 = format.parse(horario2);
+			date1 = format.parse(this.horario1);
+			date2 = format.parse(this.horario2);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
