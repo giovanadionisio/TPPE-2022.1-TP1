@@ -8,6 +8,7 @@ public class CadastroNovoAcesso {
     private int veiculosQnt;
     private Eventos eventos;
     private int estacionamentoTam;
+    private String acessoPorEvento = "S";
 
     public CadastroNovoAcesso(int veiculosQnt, Eventos eventos, int estacionamentoTam) {
         this.veiculosQnt = veiculosQnt;
@@ -22,7 +23,7 @@ public class CadastroNovoAcesso {
             if (this.eventos.eventos.size() > 0) {
                 System.out.println("Acesso por evento? (S/n)");
                 String ev = input.next();
-                if(ev.contentEquals("S") || ev.contentEquals("s")){
+                if(ev.contentEquals(acessoPorEvento) || ev.contentEquals(acessoPorEvento.toLowerCase())) {
                     System.out.println("Selecione o evento: ");
                     for (int i = 0; i < this.eventos.eventos.size(); i++) {
                         System.out.printf("%d - %s | Início %s | Fim %s\n", i+1, eventos.eventos.get(i).nome, eventos.eventos.get(i).horaInicio, eventos.eventos.get(i).horaFim);
