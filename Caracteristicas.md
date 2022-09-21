@@ -39,3 +39,17 @@ Instruções switch;
 Generalização especulativa.
 
 É possível refatorar projetos de código extraindo métodos para se alcançar a modularidade. Utilizar a operação "Extrair método" quando a mesma expressão encontra-se em dois métodos na mesma classe é uma possível refatoração.
+
+### Boa documentação
+
+Uma boa documentação é um texto escrito que acompanha o software e geralmente explica como utilizá-lo. A documentação do software pode auxiliar usuários e programadores sobre as rotinas que estão contidas no software facilitando o uso e o desenvolvimento para futuras evoluções. Consiste num conjunto de manuais gerais e técnicos, até diagramas explicando o funcionamento do programa como um todo ou cada parte dele.
+
+Em termos gerais, documentações precisam ter três elementos:
+
+- contextualização de problema: informa cada obstáculo durante o desenvolvimento e em que situação ele ocorreu;
+- contextualização de solução: explica as modificações feitas em processos ou no código que corrigiram o problema;
+- detalhes técnicos: familiarizam o responsável por aquela parte do desenvolvimento sobre como, quando e por que aquela intervenção foi realizada.
+
+Em relação com os maus-cheiros de código definidos por Fowler, uma boa documentação auxilia na redução de Códigos Duplicados, Métodos Longos, Classe Grande, Cadeias de Mensagens e Comentários.
+
+Uma operação de refatoração que pode ser feita é remover comentários desnecessários, pois eles podem ser substituídos por uma boa documentação. Outra melhoria é que a documentação reduz as linhas de código e, consequentemente, a complexidade do código.
