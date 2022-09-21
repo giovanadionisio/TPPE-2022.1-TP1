@@ -53,3 +53,13 @@ Em termos gerais, documentações precisam ter três elementos:
 Em relação com os maus-cheiros de código definidos por Fowler, uma boa documentação auxilia na redução de Códigos Duplicados, Métodos Longos, Classe Grande, Cadeias de Mensagens e Comentários.
 
 Uma operação de refatoração que pode ser feita é remover comentários desnecessários, pois eles podem ser substituídos por uma boa documentação. Outra melhoria é que a documentação reduz as linhas de código e, consequentemente, a complexidade do código.
+
+
+### Ausência de Duplicidades
+
+Goodliffe(2006) afirma que a duplicação de código é inimiga do design simples e elegante e que as redundâncias fragilizam o código. Um projeto com duplicidades mostra-se menos manutenível e seguro, pois facilita o surgimento de problemas causados por modificações em um trecho de código que não são aplicadas aos trechos duplicados. Desta forma, um bug pode ser corrigido em uma parte do código, mas continuar presente em outra duplicada. Assim, a Ausência de Duplicidades facilita a correção de problemas, propicia um melhor entendimento do código e auxilia na manutenção e segurança do projeto.
+
+A característica de Ausência de Duplicidades está associada ao mau-cheiro Código Duplicado, caracterizado pela repetição de um mesmo trecho de código em vários pontos do projeto. Para Fowler(1999), se um mesmo trecho de código existe em mais de um ponto do projeto, unificá-los aumenta a qualidade do programa.
+
+Uma das operações de refatoração que levam um projeto a apresentar essa característica é a Extrair Método, quando a mesma expressão pode ser encontrada em dois métodos na mesma classe. Também é possível aplicar o método template e extrair comportamentos comuns de dois métodos e implementar a variabilidade em subclasses.
+
