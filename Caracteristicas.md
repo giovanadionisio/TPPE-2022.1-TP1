@@ -63,3 +63,12 @@ A característica de Ausência de Duplicidades está associada ao mau-cheiro Có
 
 Uma das operações de refatoração que levam um projeto a apresentar essa característica é a Extrair Método, quando a mesma expressão pode ser encontrada em dois métodos na mesma classe. Também é possível aplicar o método template e extrair comportamentos comuns de dois métodos e implementar a variabilidade em subclasses.
 
+### Extensibilidade
+Um código bem projetado, segundo Goodliffe(2006), apresenta a possibilidade de adição de novas funcionalidades, em locais apropriados, quando elas são necessárias. Entretanto, é fundamental aplicar o equilíbrio entre produzir um código extensível mas que não seja completamente focado em lidar com qualquer possível mudança que possa ocorrer. Caso contrário, isto pode gerar uma engenharia excessiva ao projeto. Portanto, busca-se extender o código através de plug-ins, hierarquias de classe e interfaces bem planejadas, funções com retornos úteis e com uma estrutura de código lógica e maleável (GOODLIFFE, 2006).
+
+Como citado, é nescessário buscar um equilíbrio ao aplicar a extensibilidade em um projeto. Quando não existe este cuidado, identifica-se o mau-cheiro de Generalidade Especulativa. Neste caso, os projetos, visando adicionar funcionalidades que, em algum momento, poderiam ser implementadas, se tornam genéricos, apresentando maior complexidade para seu entendimento e manutenção. 
+
+Isto posto, é possível refatorar o projeto através da diminuição da hierarquia (reduzindo classes abstratas que não apresentam grande funcionalidade), da incorporação de classe (quando existem delegações desnecessárias) e a remoção de parâmetros (excluindo parâmetros que não são úteis a um método). Desta forma, elimina-se o mau-cheiro consequente da especulação da adição de futuras funcionalidades.  
+
+## Referências
+* GOODLIFFE, P. Code craft : the practice of writing excellent code. San Francisco: No Starch Press, 2006.
